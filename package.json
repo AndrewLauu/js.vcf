@@ -1,5 +1,5 @@
 {
-  "name": "vcfjs",
+  "name": "js.vcf",
   "version": "0.0.1",
   "description": "A simple javascript lib which parses vCard file (AKA *.vcf) and generate vcf object",
   "main": "./src/vcfJS.js",
@@ -19,5 +19,12 @@
     "parse"
   ],
   "author": "Andrew Lau",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1"
+  }
 }

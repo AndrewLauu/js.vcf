@@ -1,9 +1,10 @@
 # vcfJS
-[![npm](https://img.shields.io/npm/v/vcf.svg?style=flat-square)](https://npmjs.com/package/vcfJS)
-[![npm license](https://img.shields.io/npm/l/vcf.svg?style=flat-square)](https://npmjs.com/package/vcfJS)
+[![npm](https://img.shields.io/npm/v/vcf.svg?style=flat-square)](https://npmjs.com/package/js.vcf)
+[![npm license](https://img.shields.io/npm/l/vcf.svg?style=flat-square)](https://npmjs.com/package/js.vcf)
 ***
 
-[TOC]
+<!--ts-->
+<!--te-->
 
 ## Introduction
 
@@ -62,4 +63,4 @@ console.log(vCards)
     vCardObj,
     vCardObj
 ]
-    ```
+```
