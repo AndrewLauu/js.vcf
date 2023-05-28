@@ -61,6 +61,7 @@ console.log(vCards)
 ```javascript
 [
     vCardObj,
-    vCardObj
+    vCardObj,
+    ...
 ]
 ```
