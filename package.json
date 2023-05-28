@@ -1,0 +1,23 @@
+{
+  "name": "vcfjs",
+  "version": "0.0.1",
+  "description": "A simple javascript lib which parses vCard file (AKA *.vcf) and generate vcf object",
+  "main": "./src/vcfJS.js",
+  "scripts": {
+    "test": "node ./test/test_batch.js.js; node ./test/test_single.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "www.github.com/andrewlauu/vcfjs"
+  },
+  "keywords": [
+    "vcard",
+    "vcf",
+    "contact",
+    "js",
+    "javascript",
+    "parse"
+  ],
+  "author": "Andrew Lau",
+  "license": "MIT"
+}
