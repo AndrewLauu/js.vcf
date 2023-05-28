@@ -1,7 +1,8 @@
+name: AutoToc
 on:
   push:
     branches: [main]
-    paths: ['**/README*.md', '.github/workflows/AutoTOC.yaml', 'scripts/gen_toc.sh']
+    paths: ['README.md', '.github/workflows/AutoTOC.yml']
 
 jobs:
   update_toc:
@@ -14,7 +15,8 @@ jobs:
       - run: |
           curl https://raw.githubusercontent.com/ekalinin/github-markdown-toc/0.8.0/gh-md-toc -o gh-md-toc
           chmod a+x gh-md-toc
-          ./scripts/gen_toc.sh
+          ./gh-md-toc --insert --no-backup --hide-footer README.md
+          rm gh-md-toc
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Auto update markdown TOC

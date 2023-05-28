@@ -1,6 +1,6 @@
 # vcfJS
-[![npm](https://img.shields.io/npm/v/vcf.svg?style=flat-square)](https://npmjs.com/package/js.vcf)
-[![npm license](https://img.shields.io/npm/l/vcf.svg?style=flat-square)](https://npmjs.com/package/js.vcf)
+[![npm](https://img.shields.io/npm/v/js.vcf.svg?style=flat-square)](https://npmjs.com/package/js.vcf)
+[![npm license](https://img.shields.io/npm/l/js.vcf.svg?style=flat-square)](https://npmjs.com/package/js.vcf)
 ***
 
 <!--ts-->
