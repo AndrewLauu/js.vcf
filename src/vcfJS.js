@@ -1,23 +1,17 @@
-/*
- * param:  string : vCard(s) text
- * return: object : vCardObj
- */
+const EOL = '\r\n'
 
+function parseVCards(vCardsText) {
+  const vCards = []
 
-const EOL='\r\n'
-
-function parseVCards(vCardsText){
-  const vCards=[]
-
-  vCardsText+=EOL
-  var vCardsText=vCardsText
+  vCardsText += EOL
+  var vCardsText = vCardsText
     .trim()
-    .replace(/\r\n\r\n/g,EOL)
+    .replace(/\r\n{2,}/g, EOL)
 
 
-  var vCardsList=vCardsText.split('END:VCARD')
+  var vCardsList = vCardsText.split('END:VCARD')
 
-  vCardsList.forEach(c=>{
+  vCardsList.forEach(c => {
     if (!c) return
     vCards.push(parseVCard(c))
   })
@@ -26,7 +20,7 @@ function parseVCards(vCardsText){
 }
 
 
-function parseVCard(vCardText){
+function parseVCard(vCardText) {
 
   // vCard={
   //   N:{
@@ -48,18 +42,18 @@ function parseVCard(vCardText){
   //   }...
   // }
 
-  const vCard={}
+  const vCard = {}
   //contentline = [group "."] name *(";" param) ":" value CRLF
   // const propName=["SOURCE","KIND","FN","N","NICKNAME","PHOTO","BDAY","ANNIVERSARY","GENDER","ADR","TEL","EMAIL","IMPP","LANG","TZ","GEO","TITLE","ROLE","LOGO","ORG","MEMBER","RELATED","CATEGORIES","NOTE","PRODID","REV","SOUND","UID","CLIENTPIDMAP","URL","KEY","FBURL","CALADRURI","CALURI","XML"]
 
-  const vCardList=vCardText
-    .replace(/BEGIN:VCARD/g,'')
-    .replace(/\r\n[\x20\x09]/g,'')//unfold
-    .replace(/(.)\r\n\1/g,'=')//unfold
-    .replace(/\\:/g,'<%escapedCol%>')
-    .replace(/\\;/g,'<%escapedSemiCol%>')
-    .replace(/\\,/g,'<%escapedSemiCom%>')
-    .replace(/\r\n\r\n/g,EOL)
+  const vCardList = vCardText
+    .replace(/BEGIN:VCARD/g, '')
+    .replace(/\r\n[\x20\x09]/g, '')//unfold
+    .replace(/(.)\r\n\1/g, '=')//unfold
+    .replace(/\\:/g, '<%escapedCol%>')
+    .replace(/\\;/g, '<%escapedSemiCol%>')
+    .replace(/\\,/g, '<%escapedSemiCom%>')
+    .replace(/\r\n{2,}/g, EOL)
     .trim()
     .split(EOL)
 
@@ -68,8 +62,8 @@ function parseVCard(vCardText){
   //   .map(e=>"("+e+")")
   //   .join("|")+':|;.*?'+EOL+'$','gi')
 
-  for (var i=0;i<vCardList.length;i++){
-    var procLine=vCardList[i].trim()
+  for (var i = 0; i < vCardList.length; i++) {
+    var procLine = vCardList[i].trim()
     //unfold line
     // while(i<vCardList.length-1 && !tagExp.test(vCardList[i+1]))
     // { 
@@ -78,40 +72,35 @@ function parseVCard(vCardText){
     // }
 
     //contentline = [group "."] name *(";" param) ":" value CRLF
-    var [pnameParam,...value]=procLine.split(':')
-    var [pname,...params]=pnameParam.split(';')
+    var [pnameParam, ...value] = procLine.split(':')
+    var [pname, ...params] = pnameParam.split(';')
 
-    const paramsValue={}
+    const paramsValue = {}
 
-    params.forEach(p=>{
-      var [k,v=null]=p.split('=')
-      paramsValue[k]=v
+    params.forEach(p => {
+      var [k, v = null] = p.split('=')
+      paramsValue[k] = v
     })
 
-    value=value.join(':')
-    if (paramsValue['CHARSET'] && paramsValue['CHARSET'].toUpperCase()=="UTF-8"){
-      value=value
+    value = value.join(':')
+    if (paramsValue['CHARSET'] && paramsValue['CHARSET'].toUpperCase() == "UTF-8") {
+      value = value
         .split(';').map(
-          np=>np.split(',').map(
-          npp=>Buffer.from(
-            npp.replace(/=/g,''),'hex')
-          .toString()
-        ).join(',')
-      ).join(';')
+          np => np.split(',').map(
+            npp => Buffer.from(
+              npp.replace(/=/g, ''), 'hex')
+              .toString()
+          ).join(',')
+        ).join(';')
     }
-    paramsValue.VALUE=value
-      .replace(/<%escapedCol%>/g,':')
-      .replace(/<%escapedSemiCol%>/g,';')
-      .replace(/<%escapedSemiCom%>/g,',')
+    paramsValue.VALUE = value
+      .replace(/<%escapedCol%>/g, ':')
+      .replace(/<%escapedSemiCol%>/g, ';')
+      .replace(/<%escapedSemiCom%>/g, ',')
 
-    if (!vCard[pname]) vCard[pname]=[]
+    if (!vCard[pname]) vCard[pname] = []
     vCard[pname].push(paramsValue)
   }
   delete vCard.END
   return vCard
-}
-
-module.exports ={ 
-  parseVCard:parseVCard,
-  parseVCards:parseVCards
 }

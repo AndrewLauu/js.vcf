@@ -1,7 +1,7 @@
 name: AutoToc
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths: ['README.md', '.github/workflows/AutoTOC.yml']
 
 jobs:

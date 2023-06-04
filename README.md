@@ -1,4 +1,4 @@
-# vcfJS
+# js.vcf
 [![npm](https://img.shields.io/npm/v/js.vcf.svg?style=flat-square)](https://npmjs.com/package/js.vcf)
 [![npm license](https://img.shields.io/npm/l/js.vcf.svg?style=flat-square)](https://npmjs.com/package/js.vcf)
 ***
@@ -8,23 +8,24 @@
 
 ## Introduction
 
-This is a simple javascript lib which parses vCard file (AKA \*.vcf) and generate vcf object.
+This is a simple javascript lib which parses vCard file (\*.vcf) and generate vcf object.
 
-Only support vCard 2.1 version.
+- Only support vCard 2.1 version.
+- Only support parse, generating is not currently (or permanently) supported.
 
 ## USE
 
 ### Install
 
-`npm install vcfJS`
+`npm install js.vcf`
 
 ### parse one vCard
 
 ```javascript
 const fs = require('fs')
-const {parseVCard} = require('vcfJS')
+const {parseVCard} = require('js.vcf')
 
-const vcfText = fs.readFileSync('/path/to/vcffile.vcf')
+const vcfText = fs.readFileSync('/path/to/vcf.vcf')
 var vCard = parseVCard(vcfText)
 console.log(vCard.NF[0].VALUE)
 console.log(vCard)
@@ -50,9 +51,9 @@ console.log(vCard)
 
 ```javascript
 const fs = require('fs')
-const {parseVCards} = require('vcfJS')
+const {parseVCards} = require('js.vcf')
 
-const vcfText = fs.readFileSync('/path/to/vcffile.vcf')
+const vcfText = fs.readFileSync('/path/to/vcf.vcf')
 var vCards = parseVCard(vcfText)
 
 console.log(vCards)
