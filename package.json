@@ -1,6 +1,6 @@
 {
   "name": "js.vcf",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple javascript lib which parses vCard file (AKA *.vcf) and generate vcf object",
   "main": "./src/vcfJS.js",
   "scripts": {
