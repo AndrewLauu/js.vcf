@@ -104,3 +104,8 @@ function parseVCard(vCardText) {
   delete vCard.END
   return vCard
 }
+
+module.exports = {
+  parseVCard: parseVCard,
+  parseVCards: parseVCards
+}

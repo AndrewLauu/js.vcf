@@ -2,13 +2,16 @@
   "name": "js.vcf",
   "version": "0.0.2",
   "description": "A simple javascript lib which parses vCard file (AKA *.vcf) and generate vcf object",
-  "main": "./src/vcfJS.js",
+  "main": "./src/js.vcf.js",
   "scripts": {
-    "test": "node ./test/test_batch.js.js; node ./test/test_single.js"
+    "test": "node ./test/test.js"
   },
   "repository": {
     "type": "git",
-    "url": "www.github.com/andrewlauu/vcfjs"
+    "url": "https://www.github.com/andrewlauu/js.vcf"
+  },
+  "bugs": {
+    "url": "https://www.github.com/andrewlauu/js.vcf/issues"
   },
   "keywords": [
     "vcard",
@@ -19,6 +22,7 @@
     "parse"
   ],
   "author": "Andrew Lau",
+  "homepage": "https://www.github.com/andrewlauu/js.vcf",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^8.41.0",
@@ -27,5 +31,5 @@
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-promise": "^6.1.1"
   },
-  "types": "./types/vcfJS.d.ts"
+  "types": "./types/js.vcf.d.ts"
 }
